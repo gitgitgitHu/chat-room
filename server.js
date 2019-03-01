@@ -13,16 +13,15 @@ server.listen(8282);
  io.sockets.emit()表示所有人都可以收到这个事件
  socket.broadcast.emit()是向除自己外的所有人发送事件
 */
-io.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
     socket.on('login', function (username) {//注册名字
         if (users.indexOf(username) > -1) {
             socket.emit('existed');//名字已存在         ***
-            // io.sockets.emit('existed');//名字已存在        ***
         } else {
+            console.log('新用户：',username);
             socket.username = username;
             users.push(username);
             socket.emit('success');//名称保存成功        ***
-            // io.sockets.emit('success');//名称保存成功        ***
         };
     });
     socket.on('sendMsg', function(msg) {//触发sendMsg事件

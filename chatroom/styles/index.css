@@ -6,11 +6,11 @@
 .login-name {
     width: 30%;
 }
-#loginName {
+#loginName,#chatWindow {
     display: none;
 }
-#chatWindow {
-    display: none;
+#message {
+    color: red;
 }
 #main {
     height: 400px;
