@@ -1,4 +1,10 @@
-- 一个基于websocket和nodejs的迷你聊天室demo
-
+- 一个迷你聊天室demo
 
 - npm server启动
+
+
+- 所有用到的：
+  - node.js
+  - socket.io
+  - express
+  - bootstrap
