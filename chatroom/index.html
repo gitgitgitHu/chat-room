@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>聊天室</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./styles/index.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/home.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎进入聊天室</h1>
+        <div id="loginName">
+            <h3>起个名字吧：</h3>
+            <div class="input-group login-name">
+                <input type="text" class="form-control" id="userName"/>
+                <div class="input-group-btn">
+                    <button class="btn btn-default" onclick="saveName()">好！</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info" id="chatWindow">
+            <div class="panel-heading">聊天窗口</div>
+            <div class="panel-body" >
+                <ul class="list-group" id="main"></ul>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="sendMsg"/>
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button" onclick="sendMsg()">发送</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

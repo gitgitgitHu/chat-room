@@ -1,0 +1,25 @@
+
+.list-group-item {
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.login-name {
+    width: 30%;
+}
+#loginName {
+    display: none;
+}
+#chatWindow {
+    display: none;
+}
+#main {
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 20px;
+}
+#main span {
+    color: #999;
+    font-size: 12px;
+    margin-left: 10px;
+}
