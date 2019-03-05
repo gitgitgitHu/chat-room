@@ -52,12 +52,21 @@ ChatRoom.prototype = {
                 that.receivesMsg('me', msg); //把发送的消息显示到聊天窗
             };
         }, false);
+        document.getElementById('msgInp').addEventListener('keyup', function(e) {
+            let msgInp = document.getElementById('msgInp');
+            let msg = msgInp.value;
+            if (e.keyCode == 13 && msg != '') {//enter键发送消息
+                msgInp.value = '';
+                that.socket.emit('sendMsg', msg);
+                that.receivesMsg('me', msg);
+            };
+        }, false);
     },
     receivesMsg: function (user, msg) {//接收消息
         let msglist = document.getElementById('main');
         let getmsg = document.createElement('div');
         let date = new Date().toTimeString().substr(0, 8);
-        getmsg.innerHTML = `<h5>${user}<span>${date}</span></h5><li class="list-group-item ${user == 'me' && 'list-group-item-info'}">${msg}</li>`;
+        getmsg.innerHTML = `<h5>${user}<span>${date}</span></h5><li class="list-group-item ${user != 'me' && 'list-group-item-info'}">${msg}</li>`;
         msglist.appendChild(getmsg);
         msglist.scrollTop = msglist.scrollHeight;
     }
