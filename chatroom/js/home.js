@@ -50,7 +50,7 @@ ChatRoom.prototype = {
                 that.receivesMsg('me', msg); //把发送的消息显示到聊天窗
             };
         })
-        $('#msgInp').keyup(function() {
+        $('#msgInp').keyup(function(e) {
             let msg = $('#msgInp').val();
             if (e.keyCode == 13 && msg != '') {//enter键发送消息
                 $('#msgInp').val('');
@@ -73,6 +73,12 @@ ChatRoom.prototype = {
         let msglist = document.getElementById('main');
         let getmsg = document.createElement('div');
         let date = new Date().toTimeString().substr(0, 8);
+        let reg = /\[:\d+\]/g;
+        let item = reg.exec(msg);
+        if(item) {
+            let index = item[0].slice(2,3);
+            msg = msg.replace(item[0], `<img src='../emoji/${index}.jpg'/>`);
+        }
         getmsg.innerHTML = `<h5>${user}<span>${date}</span></h5><li class="list-group-item ${user != 'me' && 'list-group-item-info'}">${msg}</li>`;
         msglist.appendChild(getmsg);
         msglist.scrollTop = msglist.scrollHeight;
@@ -87,7 +93,8 @@ ChatRoom.prototype = {
         };
         $('#emojiList').append(box);
         $('#emojiList img').click(function (e) {
-            $('#msgInp').val('/:' + e.target.title);
+            $('#msgInp').val($('#msgInp').val() + '[:' + e.target.title + ']');
+            $('#msgInp').focus();
         })
     }
 };

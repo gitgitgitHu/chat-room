@@ -31,3 +31,6 @@
     width: 50px;
     margin: 5px;
 }
+.list-group-item img {
+    max-width: 100px;
+}
