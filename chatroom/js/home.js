@@ -21,7 +21,7 @@ ChatRoom.prototype = {
         this.socket.on('disconnect', function() {//断开链接
             document.getElementById('loginName').style.display = 'none';
             document.getElementById('chatWindow').style.display = 'none';
-            document.getElementById('message').innerHTML = '与服务器断开连接，刷新重连';
+            document.getElementById('message').innerHTML = '与服务器断开连接，检查重连';
         });
         this.socket.on('existed', function() {//名字被占用
             alert('这个名字已经有人用了哦');

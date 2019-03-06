@@ -6,9 +6,9 @@
 .login-name {
     width: 30%;
 }
-/* #loginName,#chatWindow {
+#loginName,#chatWindow {
     display: none;
-} */
+}
 #message {
     color: red;
 }
