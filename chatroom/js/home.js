@@ -79,7 +79,7 @@ ChatRoom.prototype = {
             let index = item[0].slice(2,3);
             msg = msg.replace(item[0], `<img src='../emoji/${index}.jpg'/>`);
         }
-        getmsg.innerHTML = `<h5>${user}<span>${date}</span></h5><li class="list-group-item ${user != 'me' && 'list-group-item-info'}">${msg}</li>`;
+        getmsg.innerHTML = `<h5>${user}<span>${date}</span></h5><li class="list-group-item ${user != 'me' && 'list-group-item-info'}"><p>${msg}</p></li>`;
         msglist.appendChild(getmsg);
         msglist.scrollTop = msglist.scrollHeight;
     },
