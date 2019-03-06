@@ -16,20 +16,20 @@ ChatRoom.prototype = {
         this.socket = io.connect();
         this.socket.on('connect', function() {//建立成功
             //输入名字
-            document.getElementById('loginName').style.display = 'block';
+            $('#loginName').css('display', 'block');
         });
         this.socket.on('disconnect', function() {//断开链接
-            document.getElementById('loginName').style.display = 'none';
-            document.getElementById('chatWindow').style.display = 'none';
-            document.getElementById('message').innerHTML = '与服务器断开连接，检查重连';
+            $('#loginName').css('display', 'none');
+            $('#chatWindow').css('display', 'none');
+            $('#message').innerHTML = '与服务器断开连接，检查重连';
         });
         this.socket.on('existed', function() {//名字被占用
             alert('这个名字已经有人用了哦');
         });
         this.socket.on('success', function() {//注册成功
             alert('创建成功，开始聊天吧！');
-            document.getElementById('loginName').style.display = 'none';
-            document.getElementById('chatWindow').style.display = 'block';
+            $('#loginName').css('display', 'none');
+            $('#chatWindow').css('display', 'block');
         });
         this.socket.on('newMsg', function(user, msg) {//接收到新消息
             that.receivesMsg(user, msg);
@@ -70,7 +70,6 @@ ChatRoom.prototype = {
         });
     },
     receivesMsg: function (user, msg) {//接收消息
-        let msglist = document.getElementById('main');
         let getmsg = document.createElement('div');
         let date = new Date().toTimeString().substr(0, 8);
         let reg = /\[:\d+\]/g;
@@ -80,8 +79,8 @@ ChatRoom.prototype = {
             msg = msg.replace(item[0], `<img src='../emoji/${index}.jpg'/>`);
         }
         getmsg.innerHTML = `<h5>${user}<span>${date}</span></h5><li class="list-group-item ${user != 'me' && 'list-group-item-info'}"><p>${msg}</p></li>`;
-        msglist.appendChild(getmsg);
-        msglist.scrollTop = msglist.scrollHeight;
+        $('#main').append(getmsg);
+        $('#main').scrollTop($('#main').height());
     },
     loadEmoji: function () {//加载图片
         let box = document.createDocumentFragment();
