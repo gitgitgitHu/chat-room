@@ -80,7 +80,7 @@ ChatRoom.prototype = {
         }
         getmsg.innerHTML = `<h5>${user}<span>${date}</span></h5><li class="list-group-item ${user != 'me' && 'list-group-item-info'}"><p>${msg}</p></li>`;
         $('#main').append(getmsg);
-        $('#main').scrollTop($('#main').height());
+        $('#main').scrollTop($('#main')[0].scrollHeight);
     },
     loadEmoji: function () {//加载图片
         let box = document.createDocumentFragment();
